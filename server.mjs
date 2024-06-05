@@ -8,9 +8,24 @@ const client = new pg.Client({ user: 'postgres', host: 'localhost', database: 'A
 client.connect() .then(() => { console.log('Connected to PostgreSQL database!'); }) .catch((err) => { console.error('Error connecting to the database:', err); });
 
 app.get('/', async (req, res) => {
-  var ret = await client.query('select count(name) from music');
   res.status(200).json(ret.rows);
   //res.send('Welcome to my server!');
+});
+
+app.get('/api/getMusic',async function (req, res) {
+  var statement = 'select * from music mu';
+  var musictype = ''
+  if(req.query.type){
+     musictype = req.query.type;
+  }
+  if(musictype != ''){
+     statement += ' where mu.type = ' + "'" + musictype + "'"
+  }
+  var ret =  await client.query(statement);
+  console.log(statement)
+  if(ret != null){
+     res.status(200).json({'result':'success','queryret':ret.rows})
+  }
 });
 
 app.listen(port, () => {
