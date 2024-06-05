@@ -8,8 +8,7 @@ const client = new pg.Client({ user: 'postgres', host: 'localhost', database: 'a
 client.connect() .then(() => { console.log('Connected to PostgreSQL database!'); }) .catch((err) => { console.error('Error connecting to the database:', err); });
 
 app.get('/', async (req, res) => {
-  res.status(200).json(ret.rows);
-  //res.send('Welcome to my server!');
+  res.send('Welcome to my server!');
 });
 
 app.get('/api/getMusic',async function (req, res) {
