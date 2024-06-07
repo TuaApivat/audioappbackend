@@ -17,12 +17,14 @@ app.get('/', async (req, res) => {
 
 app.post('/api/searchmusic', async (req, res) => {
 
-  console.log('reqbody' + req.body.mname);
+  console.log('reqbody:' + req.body.mname);
   var statement = 'select * from music WHERE name LIKE ';
   statement += "'" + req.body.mname + "%" + "'";
   if(req.body.mname.length == 0)
     statement = 'select * from music limit 5';
+  console.log(statement);
   var result = await client.query(statement);
+  console.log(result);
   if(result.rows != null)
       res.status(200).json({'query':result,'nq':1})
   else if(result.rows == null){
