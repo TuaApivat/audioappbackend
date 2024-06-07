@@ -25,9 +25,9 @@ app.post('/api/searchmusic', async (req, res) => {
   console.log(statement);
   var result = await client.query(statement);
   if(result.rows != null)
-      res.status(200).json({'query':result,'nq':1})
+      res.status(200).json({'query':result.rows,'nq':1})
   else if(result.rows == null){
-      res.status(200).json({'query':result,'nq':-1})
+      res.status(200).json({'query':result.rows,'nq':-1})
   }
 });
 
