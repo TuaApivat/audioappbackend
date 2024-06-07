@@ -15,6 +15,18 @@ app.get('/', async (req, res) => {
   res.send('Welcome to my server!');
 });
 
+app.post('/private/searchmusic', async (req, res) => {
+
+  var statement = 'select * from music WHERE name LIKE ';
+  statement += "'" + req.body.mname + "%" + "'";
+  var result = await client.query(statement);
+  if(result.rows != null)
+      res.status(200).json({query:result,nq:1})
+  else if(result.rows == null){
+      res.status(200).json({query:result,nq:-1})
+  }
+});
+
 app.post('/api/fetchInList',async function (req, res) {
   
   var inputs = req.body.inputs;
