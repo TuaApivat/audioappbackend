@@ -24,7 +24,6 @@ app.post('/api/searchmusic', async (req, res) => {
     statement = 'select * from music limit 5';
   console.log(statement);
   var result = await client.query(statement);
-  console.log(result);
   if(result.rows != null)
       res.status(200).json({'query':result,'nq':1})
   else if(result.rows == null){
