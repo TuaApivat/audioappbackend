@@ -15,10 +15,12 @@ app.get('/', async (req, res) => {
   res.send('Welcome to my server!');
 });
 
-app.post('/private/searchmusic', async (req, res) => {
+app.post('/api/searchmusic', async (req, res) => {
 
   var statement = 'select * from music WHERE name LIKE ';
   statement += "'" + req.body.mname + "%" + "'";
+  if(req.body.mname.length == 0)
+    statement = 'select * from music limit 5';
   var result = await client.query(statement);
   if(result.rows != null)
       res.status(200).json({query:result,nq:1})
