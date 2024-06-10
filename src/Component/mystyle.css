@@ -1,0 +1,41 @@
+.login-form {
+    width: 70vw;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: hsl(0, 0%, 96%);
+    border-radius: 5px;
+    text-align: center;
+    height: 70vh;
+  }
+  
+  .user-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+  
+  .forgot-password {
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+    color: #999;
+  }
+  
+  .social-login {
+    margin-top: 20px;
+  }
+  
+  .social-icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    /* Add social icon styles */
+  }
