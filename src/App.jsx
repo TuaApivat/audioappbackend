@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <MusicListCom/>
+      <p>Test</p>
     </>
   )
 }
